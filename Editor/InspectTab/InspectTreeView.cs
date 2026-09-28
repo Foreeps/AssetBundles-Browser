@@ -23,7 +23,7 @@ namespace AssetBundleBrowser
 		}
     }
 
-	class InspectBundleTree : TreeView
+	class InspectBundleTree : TreeView<int>
 	{
 		AssetBundleInspectTab m_InspectTab;
 		internal InspectBundleTree(TreeViewState s, AssetBundleInspectTab parent) : base(s)
