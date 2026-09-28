@@ -22,7 +22,8 @@ namespace AssetBundleBrowser.AssetBundleDataSource
         {
             var properList = new List<Type>();
             properList.Add(null); //empty spot for "default" 
-            var x = AppDomain.CurrentDomain.GetAssemblies();
+            //var x = AppDomain.CurrentDomain.GetAssemblies();
+            var x = CurrentAssemblies.GetLoadedAssemblies();
             foreach (var assembly in x)
             {
                 try
