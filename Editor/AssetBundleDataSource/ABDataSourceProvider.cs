@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.Assemblies;
 
 namespace AssetBundleBrowser.AssetBundleDataSource
 {
