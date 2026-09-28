@@ -111,7 +111,7 @@ namespace AssetBundleBrowser
             if(m_BundleTree == null)
             {
                 if (m_AssetListState == null)
-                    m_AssetListState = new TreeViewState();
+                    m_AssetListState = new TreeViewState<int>();
 
                 var headerState = AssetListTree.CreateDefaultMultiColumnHeaderState();// multiColumnTreeViewRect.width);
                 if (MultiColumnHeaderState.CanOverwriteSerializedFields(m_AssetListMCHState, headerState))
@@ -124,12 +124,12 @@ namespace AssetBundleBrowser
                 m_MessageList = new MessageList();
 
                 if (m_BundleDetailState == null)
-                    m_BundleDetailState = new TreeViewState();
+                    m_BundleDetailState = new TreeViewState<int>();
                 m_DetailsList = new BundleDetailList(m_BundleDetailState);
                 m_DetailsList.Reload();
 
                 if (m_BundleTreeState == null)
-                    m_BundleTreeState = new TreeViewState();
+                    m_BundleTreeState = new TreeViewState<int>();
                 m_BundleTree = new AssetBundleTree(m_BundleTreeState, this);
                 m_BundleTree.Refresh();
                 m_Parent.Repaint();
