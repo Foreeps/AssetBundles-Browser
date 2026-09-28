@@ -26,7 +26,7 @@ namespace AssetBundleBrowser
 	class InspectBundleTree : TreeView<int>
 	{
 		AssetBundleInspectTab m_InspectTab;
-		internal InspectBundleTree(TreeViewState s, AssetBundleInspectTab parent) : base(s)
+		internal InspectBundleTree(TreeViewState<int> s, AssetBundleInspectTab parent) : base(s)
 		{
 			m_InspectTab = parent;
 			showBorder = true;
