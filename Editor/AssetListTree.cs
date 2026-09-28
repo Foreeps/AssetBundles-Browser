@@ -387,7 +387,7 @@ namespace AssetBundleBrowser
         {
             SortIfNeeded(rootItem, GetRows());
         }
-        void SortIfNeeded(TreeViewItem<int> root, IList<TreeViewItem> rows)
+        void SortIfNeeded(TreeViewItem<int> root, IList<TreeViewItem<int>> rows)
         {
             if (rows.Count <= 1)
                 return;
