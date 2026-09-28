@@ -71,9 +71,10 @@ namespace AssetBundleBrowser
 
             if (File.Exists(dataPath))
             {
-                BinaryFormatter bf = new BinaryFormatter();
+                //BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Open(dataPath, FileMode.Open);
-                var data = bf.Deserialize(file) as InspectTabData;
+                //var data = bf.Deserialize(file) as InspectTabData;
+                var data = JsonSerializer.Deserialize<T>(file) as InspectTabData;
                 if (data != null)
                     m_Data = data;
                 file.Close();
@@ -99,10 +100,11 @@ namespace AssetBundleBrowser
             dataPath = dataPath.Replace("\\", "/");
             dataPath += "/Library/AssetBundleBrowserInspect.dat";
 
-            BinaryFormatter bf = new BinaryFormatter();
+            //BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Create(dataPath);
 
-            bf.Serialize(file, m_Data);
+            //bf.Serialize(file, m_Data);
+            file.Write(JsonSerializer.SerializeToUtf8Bytes(m_Data, new JsonSerializerOptions { WriteIndented = false, IgnoreNullValues = true; }));
             file.Close();
         }
 
