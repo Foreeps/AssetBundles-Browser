@@ -31,7 +31,7 @@ namespace AssetBundleBrowser
             return item != null && item.displayName.Length > 0;
         }
 
-        protected override bool DoesItemMatchSearch(TreeViewItem item, string search)
+        protected override bool DoesItemMatchSearch(TreeViewItem<int> item, string search)
         {
             var bundleItem = item as AssetBundleModel.BundleTreeItem;
             return bundleItem.bundle.DoesItemMatchSearch(search);
