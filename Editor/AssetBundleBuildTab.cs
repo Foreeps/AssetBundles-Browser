@@ -83,10 +83,11 @@ namespace AssetBundleBrowser
             dataPath = dataPath.Replace("\\", "/");
             dataPath += "/Library/AssetBundleBrowserBuild.dat";
 
-            BinaryFormatter bf = new BinaryFormatter();
+            //BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Create(dataPath);
 
-            bf.Serialize(file, m_UserData);
+            //bf.Serialize(file, m_UserData);
+            file.Write(JsonSerializer.SerializeToUtf8Bytes(m_UserData, new JsonSerializerOptions { WriteIndented = false, IgnoreNullValues = true }));
             file.Close();
 
         }
@@ -101,9 +102,10 @@ namespace AssetBundleBrowser
 
             if (File.Exists(dataPath))
             {
-                BinaryFormatter bf = new BinaryFormatter();
+                //BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Open(dataPath, FileMode.Open);
-                var data = bf.Deserialize(file) as BuildTabData;
+                //var data = bf.Deserialize(file) as BuildTabData;
+                var data = JsonSerializer.Deserialize<T>(file) as BuildTabData;
                 if (data != null)
                     m_UserData = data;
                 file.Close();
