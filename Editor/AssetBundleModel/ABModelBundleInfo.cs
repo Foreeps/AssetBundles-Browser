@@ -18,7 +18,7 @@ namespace AssetBundleBrowser.AssetBundleModel
         {
             m_Bundle = b;
             icon = iconTexture;
-            children = new List<TreeViewItem>();
+            children = new List<TreeViewItem<int>>();
         }
 
         internal MessageSystem.Message BundleMessage()
