@@ -104,7 +104,7 @@ namespace AssetBundleBrowser
             FileStream file = File.Create(dataPath);
 
             //bf.Serialize(file, m_Data);
-            file.Write(JsonSerializer.SerializeToUtf8Bytes(m_Data, new JsonSerializerOptions { WriteIndented = false, IgnoreNullValues = true; }));
+            file.Write(JsonSerializer.SerializeToUtf8Bytes(m_Data, new JsonSerializerOptions { WriteIndented = false, IgnoreNullValues = true }));
             file.Close();
         }
 
