@@ -34,8 +34,8 @@ namespace AssetBundleBrowser
 
 		protected override TreeViewItem<int> BuildRoot()
 		{
-			var root = new TreeViewItem(-1, -1);
-			root.children = new List<TreeViewItem>();
+			var root = new TreeViewItem<int>(-1, -1);
+			root.children = new List<TreeViewItem<int>>();
 			if (m_InspectTab == null)
 				Debug.Log("Unknown problem in AssetBundle Browser Inspect tab.  Restart Browser and try again, or file ticket on github.");
 			else
@@ -49,7 +49,7 @@ namespace AssetBundleBrowser
                     }
                     else
                     {
-                        var folderItem = new TreeViewItem(folder.Key.GetHashCode(), 0, folder.Key);
+                        var folderItem = new TreeViewItem<int>(folder.Key.GetHashCode(), 0, folder.Key);
                         foreach (var path in folder.Value)
                         {
 
