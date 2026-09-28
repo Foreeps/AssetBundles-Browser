@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace AssetBundleBrowser
 {
-    internal class AssetListTree : TreeView
+    internal class AssetListTree : TreeView<int>
     {
         List<AssetBundleModel.BundleInfo> m_SourceBundles = new List<AssetBundleModel.BundleInfo>();
         AssetBundleManageTab m_Controller;
