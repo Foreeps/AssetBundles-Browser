@@ -207,13 +207,13 @@ namespace AssetBundleBrowser
         internal static TreeViewItem<int> AppendBundleToTree(AssetBundleModel.BundleDataInfo bundle)
         {
             var itemName = bundle.m_Name.fullNativeName;
-            var bunRoot = new TreeViewItem(itemName.GetHashCode(), 0, itemName);
+            var bunRoot = new TreeViewItem<int>(itemName.GetHashCode(), 0, itemName);
 
             var str = itemName + k_SizeHeader;
-            var sz = new TreeViewItem(str.GetHashCode(), 1, k_SizeHeader + bundle.TotalSize());
+            var sz = new TreeViewItem<int>(str.GetHashCode(), 1, k_SizeHeader + bundle.TotalSize());
 
             str = itemName + k_DependencyHeader;
-            var dependency = new TreeViewItem(str.GetHashCode(), 1, k_DependencyEmpty);
+            var dependency = new TreeViewItem<int>(str.GetHashCode(), 1, k_DependencyEmpty);
             var depList = bundle.GetBundleDependencies();
             if(depList.Count > 0)
             {
@@ -221,7 +221,7 @@ namespace AssetBundleBrowser
                 foreach (var dep in bundle.GetBundleDependencies())
                 {
                     str = itemName + dep.m_BundleName;
-                    TreeViewItem newItem = new TreeViewItem( str.GetHashCode(), 2, dep.m_BundleName );
+                    TreeViewItem<int> newItem = new TreeViewItem<int>( str.GetHashCode(), 2, dep.m_BundleName );
                     newItem.icon = Model.GetBundleIcon();
                     dependency.AddChild(newItem);
                     
@@ -250,7 +250,7 @@ namespace AssetBundleBrowser
             }
 
             str = itemName + k_MessageHeader;
-            var msg = new TreeViewItem(str.GetHashCode(), 1, k_MessageEmpty);
+            var msg = new TreeViewItem<int>(str.GetHashCode(), 1, k_MessageEmpty);
             if (bundle.HasMessages())
             {
                 msg.displayName = k_MessageHeader;
