@@ -194,7 +194,7 @@ namespace AssetBundleBrowser
             SetSelection( selected );
         }
 
-        void AddIfInPaths( List<string> paths, List<int> selected, TreeViewItem me )
+        void AddIfInPaths( List<string> paths, List<int> selected, TreeViewItem<int> me )
         {
             var assetItem = me as AssetBundleModel.AssetTreeItem;
             if( assetItem != null && assetItem.asset != null )
