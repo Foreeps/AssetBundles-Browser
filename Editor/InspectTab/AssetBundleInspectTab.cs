@@ -20,7 +20,7 @@ namespace AssetBundleBrowser
         private Dictionary<string, List<string> > m_BundleList;
         private InspectBundleTree m_BundleTreeView;
         [SerializeField]
-        private TreeViewState m_BundleTreeState;
+        private TreeViewState<int> m_BundleTreeState;
 
         internal Editor m_Editor = null;
 
