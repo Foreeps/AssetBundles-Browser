@@ -103,8 +103,8 @@ namespace AssetBundleBrowser
         }
         protected override TreeViewItem<int> BuildRoot()
         {
-            var root = new TreeViewItem(-1, -1);
-            root.children = new List<TreeViewItem>();
+            var root = new TreeViewItem<int>(-1, -1);
+            root.children = new List<TreeViewItem<int>>();
             if (m_Selecteditems != null)
             {
                 foreach(var bundle in m_Selecteditems)
@@ -157,7 +157,7 @@ namespace AssetBundleBrowser
 
             for( int i = 0; i < selectedIds.Count; ++i )
             {
-                TreeViewItem item = this.FindItem( selectedIds[i], rootItem );
+                TreeViewItem<int> item = this.FindItem( selectedIds[i], rootItem );
                 if( item != null )
                 {
                     AddDependentAssetsRecursive( item, pathList );
@@ -188,7 +188,7 @@ namespace AssetBundleBrowser
         protected override void DoubleClickedItem( int id )
         {
             base.DoubleClickedItem( id );
-            TreeViewItem item = this.FindItem( id, rootItem );
+            TreeViewItem<int> item = this.FindItem( id, rootItem );
             if( item != null )
             {
                 TogglePathTreeViewItem pathItem = item as TogglePathTreeViewItem;
