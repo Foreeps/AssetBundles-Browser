@@ -111,7 +111,7 @@ namespace AssetBundleBrowser
         }
 
 
-        protected override IList<TreeViewItem> BuildRows(TreeViewItem<int> root)
+        protected override IList<TreeViewItem<int>> BuildRows(TreeViewItem<int> root)
         {
             var rows = base.BuildRows(root);
             SortIfNeeded(root, rows);
