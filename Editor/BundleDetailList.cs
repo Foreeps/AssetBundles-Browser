@@ -69,7 +69,7 @@ namespace AssetBundleBrowser
             }
         }
     }
-    internal class BundleDetailList : TreeView
+    internal class BundleDetailList : TreeView<int>
     {
         HashSet<AssetBundleModel.BundleDataInfo> m_Selecteditems;
         Rect m_TotalRect;
