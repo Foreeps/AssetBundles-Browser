@@ -417,7 +417,7 @@ namespace AssetBundleBrowser
             }
             var orderedItems = InitialOrder(assetList, sortedColumns);
 
-            rootItem.children = orderedItems.Cast<TreeViewItem>().ToList();
+            rootItem.children = orderedItems.Cast<TreeViewItem<int>>().ToList();
         }
 
         IOrderedEnumerable<AssetBundleModel.AssetTreeItem> InitialOrder(IEnumerable<AssetBundleModel.AssetTreeItem> myTypes, int[] columnList)
