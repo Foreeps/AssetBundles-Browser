@@ -8,7 +8,7 @@ using System;
 
 namespace AssetBundleBrowser
 {
-    internal class AssetBundleTree : TreeView
+    internal class AssetBundleTree : TreeView<int>
     { 
         AssetBundleManageTab m_Controller;
         private bool m_ContextOnItem = false;
