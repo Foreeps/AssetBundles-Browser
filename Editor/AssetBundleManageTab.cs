@@ -10,13 +10,13 @@ namespace AssetBundleBrowser
     internal class AssetBundleManageTab 
     {
         [SerializeField]
-        TreeViewState m_BundleTreeState;
+        TreeViewState<int> m_BundleTreeState;
         [SerializeField]
-        TreeViewState m_AssetListState;
+        TreeViewState<int> m_AssetListState;
         [SerializeField]
         MultiColumnHeaderState m_AssetListMCHState;
         [SerializeField]
-        TreeViewState m_BundleDetailState;
+        TreeViewState<int> m_BundleDetailState;
 
         Rect m_Position;
 
