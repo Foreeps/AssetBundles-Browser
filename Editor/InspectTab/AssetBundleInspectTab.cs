@@ -75,7 +75,7 @@ namespace AssetBundleBrowser
                 //BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Open(dataPath, FileMode.Open);
                 //var data = bf.Deserialize(file) as InspectTabData;
-                var data = JsonSerializer.Deserialize(file) as InspectTabData;
+                var data = JsonSerializer.Deserialize<InspectTabData>(file); // as InspectTabData;
                 if (data != null)
                     m_Data = data;
                 file.Close();
