@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace AssetBundleBrowser
 {
-	internal class InspectTreeItem : TreeViewItem
+	internal class InspectTreeItem : TreeViewItem<int>
 	{
         internal string bundlePath { get; private set; }
             
@@ -32,7 +32,7 @@ namespace AssetBundleBrowser
 			showBorder = true;
 		}
 
-		protected override TreeViewItem BuildRoot()
+		protected override TreeViewItem<int> BuildRoot()
 		{
 			var root = new TreeViewItem(-1, -1);
 			root.children = new List<TreeViewItem>();
@@ -102,7 +102,7 @@ namespace AssetBundleBrowser
                 }
             }
         }
-        private void RemoveItem(TreeViewItem item)
+        private void RemoveItem(TreeViewItem<int> item)
         {
             var inspectItem = item as InspectTreeItem;
             if (inspectItem != null)
@@ -128,7 +128,7 @@ namespace AssetBundleBrowser
             }
 		}
 
-		protected override bool CanMultiSelect(TreeViewItem item)
+		protected override bool CanMultiSelect(TreeViewItem<int> item)
 		{
 			return true;
 		}
