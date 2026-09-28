@@ -6,7 +6,7 @@ using UnityEditor.IMGUI.Controls;
 
 namespace AssetBundleBrowser
 {
-    internal class BundleDetailItem : TreeViewItem
+    internal class BundleDetailItem : TreeViewItem<int>
     {
         internal BundleDetailItem(int id, int depth, string displayName, MessageType type) : base(id, depth, displayName)
         {
@@ -17,7 +17,7 @@ namespace AssetBundleBrowser
         { get; set; }
     }
 
-    internal class TogglePathTreeViewItem : TreeViewItem
+    internal class TogglePathTreeViewItem : TreeViewItem<int>
     {
         private static bool m_DisplayAlt = false;
         
@@ -83,7 +83,7 @@ namespace AssetBundleBrowser
         private const string k_ReferencedPrefix = "- ";
 
 
-        internal BundleDetailList(TreeViewState state) : base(state)
+        internal BundleDetailList(TreeViewState<int> state) : base(state)
         {
             m_Selecteditems = new HashSet<AssetBundleModel.BundleDataInfo>();
             showBorder = true;
@@ -101,7 +101,7 @@ namespace AssetBundleBrowser
                 ExpandAll( 2 );
             }
         }
-        protected override TreeViewItem BuildRoot()
+        protected override TreeViewItem<int> BuildRoot()
         {
             var root = new TreeViewItem(-1, -1);
             root.children = new List<TreeViewItem>();
@@ -139,7 +139,7 @@ namespace AssetBundleBrowser
             m_TotalRect = rect;
             base.OnGUI(rect);
         }
-        protected override float GetCustomRowHeight(int row, TreeViewItem item)
+        protected override float GetCustomRowHeight(int row, TreeViewItem<int> item)
         {
             if( (item as BundleDetailItem) != null)
             {
@@ -167,7 +167,7 @@ namespace AssetBundleBrowser
             AssetBundleBrowserMain.instance.m_ManageTab.SetAssetListSelection( pathList );
         }
 
-        void AddDependentAssetsRecursive( TreeViewItem item, List<string> pathList )
+        void AddDependentAssetsRecursive( TreeViewItem<int> item, List<string> pathList )
         {
             TogglePathTreeViewItem pathItem = item as TogglePathTreeViewItem;
             if( pathItem != null )
@@ -204,7 +204,7 @@ namespace AssetBundleBrowser
             }
         }
 
-        internal static TreeViewItem AppendBundleToTree(AssetBundleModel.BundleDataInfo bundle)
+        internal static TreeViewItem<int> AppendBundleToTree(AssetBundleModel.BundleDataInfo bundle)
         {
             var itemName = bundle.m_Name.fullNativeName;
             var bunRoot = new TreeViewItem(itemName.GetHashCode(), 0, itemName);
@@ -241,7 +241,7 @@ namespace AssetBundleBrowser
                         }
 
                         str = str + dep.m_FromAssets[i].displayName;
-                        TreeViewItem refItem = new TogglePathTreeViewItem( str.GetHashCode(), 4, k_ReferencedPrefix,
+                        TreeViewItem<int> refItem = new TogglePathTreeViewItem( str.GetHashCode(), 4, k_ReferencedPrefix,
                             dep.m_FromAssets[i].displayName, dep.m_FromAssets[i].fullAssetName );
                         refItem.icon = AssetDatabase.GetCachedIcon(dep.m_FromAssets[i].fullAssetName) as Texture2D;
                         item.AddChild( refItem );
@@ -306,7 +306,7 @@ namespace AssetBundleBrowser
             SetExpanded( expanded );
         }
         
-        internal void FindItems( TreeViewItem item, int maximumDepth, List<int> expanded )
+        internal void FindItems( TreeViewItem<int> item, int maximumDepth, List<int> expanded )
         {
             if( item.depth >= maximumDepth || ! item.hasChildren )
                 return;
