@@ -82,7 +82,7 @@ namespace AssetBundleBrowser
             SortOption.Message
         };
 
-        internal AssetListTree(TreeViewState state, MultiColumnHeaderState mchs, AssetBundleManageTab ctrl ) : base(state, new MultiColumnHeader(mchs))
+        internal AssetListTree(TreeViewState<int> state, MultiColumnHeaderState mchs, AssetBundleManageTab ctrl ) : base(state, new MultiColumnHeader(mchs))
         {
             m_Controller = ctrl;
             showBorder = true;
@@ -111,7 +111,7 @@ namespace AssetBundleBrowser
         }
 
 
-        protected override IList<TreeViewItem> BuildRows(TreeViewItem root)
+        protected override IList<TreeViewItem> BuildRows(TreeViewItem<int> root)
         {
             var rows = base.BuildRows(root);
             SortIfNeeded(root, rows);
@@ -125,7 +125,7 @@ namespace AssetBundleBrowser
             SetSelection(new List<int>());
             Reload();
         }
-        protected override TreeViewItem BuildRoot()
+        protected override TreeViewItem<int> BuildRoot()
         {
             var root = AssetBundleModel.Model.CreateAssetListTreeView(m_SourceBundles);
             return root;
@@ -208,7 +208,7 @@ namespace AssetBundleBrowser
 
             if( me.hasChildren )
             {
-                foreach( TreeViewItem item in me.children )
+                foreach( TreeViewItem<int> item in me.children )
                 {
                     AddIfInPaths( paths, selected, item );
                 }
@@ -236,7 +236,7 @@ namespace AssetBundleBrowser
             m_Controller.SetSelectedItems(selectedAssets);
             Selection.objects = selectedObjects.ToArray();
         }
-        protected override bool CanBeParent(TreeViewItem item)
+        protected override bool CanBeParent(TreeViewItem<int> item)
         {
             return false;
         }
@@ -387,7 +387,7 @@ namespace AssetBundleBrowser
         {
             SortIfNeeded(rootItem, GetRows());
         }
-        void SortIfNeeded(TreeViewItem root, IList<TreeViewItem> rows)
+        void SortIfNeeded(TreeViewItem<int> root, IList<TreeViewItem> rows)
         {
             if (rows.Count <= 1)
                 return;
