@@ -7,7 +7,7 @@ using UnityEditor.IMGUI.Controls;
 
 namespace AssetBundleBrowser.AssetBundleModel
 {
-    internal sealed class BundleTreeItem : TreeViewItem
+    internal sealed class BundleTreeItem : TreeViewItem<int>
     {   
         private BundleInfo m_Bundle;
         internal BundleInfo bundle
